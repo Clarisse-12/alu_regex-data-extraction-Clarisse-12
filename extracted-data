@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+import re
+
+def extract_data(text):
+    values = {
+        "emails": r"[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}",
+        "urls": r"https?://(?:www\.)?[\w.-]+(?:\.[a-zA-Z]{2,6})+(?:/\S*)?",
+        "phone_numbers": r"(?:\(\d{3}\)\s?|\d{3}[-.]?)\d{3}[-.]\d{4}",
+        "credit_cards": r"\b(?:\d{4}[-\s]?){3}\d{4}\b",
+    }
+
+    extracted_data = {key: re.findall(value, text) for key, value in values.items()}
+
+    return extracted_data
+
+# exmples of input string
+test_text = """
+    Contact us at support@example.com or admin@company.co.uk.
+    Visit our site: https://www.example.com or http://subdomain.example.org/page.
+    Call us at (123) 456-7890 or 123-456-7890.
+    Use your credit card 1234-5678-9012-3456 or 1234 5678 9012 3456.
+    
+"""
+
+# Extracted data
+data = extract_data(test_text)
+
+# Result
+for key, values in data.items():
+    print(f"{key.capitalize()}:")
+    for value in values:
+        print(f"  - {value}") 
