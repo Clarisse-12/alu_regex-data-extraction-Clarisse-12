@@ -3,10 +3,10 @@ import re
 
 def extract_data(text):
     values = {
-        'emails': "[\w.-]+@[\w.-]+\.[a-zA-Z]{2,3}",
-        'urls': "https?://(?:www\.)?[\w.-]+(?:\.[a-zA-Z]{2,6})+(?:/\S*)?",
-        'phone_numbers': "(?:\(\d{3}\)\s?|\d{3}[-.]?)\d{3}[-.]\d{4}",
-        'credit_cards': r"\b(?:\d{4}[-\s]?){3}\d{4}\b",
+    .'emails': "[\w.-]+@[\w.-]+\.[a-zA-Z]{2,3}",
+    .'urls': "https?://(?:www\.)?[\w.-]+(?:\.[a-zA-Z]{2,6})+(?:/\S*)?",
+    .'phone_numbers': "(?:\(\d{3}\)\s?|\d{3}[-.]?)\d{3}[-.]\d{4}",
+    .'credit_cards': r"\b(?:\d{4}[-\s]?){3}\d{4}\b",
     }
 
     extracted_data = {key: re.findall(value, text) for key, value in values.items()}
@@ -15,10 +15,10 @@ def extract_data(text):
 
 # exmples of input string
 test_text = """
-    Contact us on Email: Kigali@company.com or Aline.Uwineza@company.co.uk
-    Visit our site:https://www.regular-expressions.info/ or http://subdomain.example.org/page
-    Phone numbers (various formats):(321) 132-0876 ,987-123-3456 ,321.654.0987
-   Credit card numbers:1234 5678 9012 3456 ,4321-8765-2109-6543
+    .Contact us on Email: Kigali@company.com or Aline.Uwineza@company.co.uk
+    .Visit our site:https://www.regular-expressions.info/ or http://subdomain.example.org/page
+    .Phone numbers:(321) 132-0876  or 987-123-3456  or 321.654.0987
+    .Credit-card numbers:1234 5678 9012 3456 or 4321-8765-2109-6543
     
 """
 
