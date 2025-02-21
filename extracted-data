@@ -3,10 +3,10 @@ import re
 
 def extract_data(text):
     values = {
-    .'emails': "[\w.-]+@[\w.-]+\.[a-zA-Z]{2,3}",
-    .'urls': "https?://(?:www\.)?[\w.-]+(?:\.[a-zA-Z]{2,6})+(?:/\S*)?",
-    .'phone_numbers': "(?:\(\d{3}\)\s?|\d{3}[-.]?)\d{3}[-.]\d{4}",
-    .'credit_cards': r"\b(?:\d{4}[-\s]?){3}\d{4}\b",
+    'emails': "[\w.-]+@[\w.-]+\.[a-zA-Z]{2,3}",
+    'urls': "https?://(?:www\.)?[\w.-]+(?:\.[a-zA-Z]{2,6})+(?:/\S*)?",
+    'phone_numbers': "(?:\(\d{3}\)\s?|\d{3}[-.]?)\d{3}[-.]\d{4}",
+    'credit_cards': r"\b(?:\d{4}[-\s]?){3}\d{4}\b",
     }
 
     extracted_data = {key: re.findall(value, text) for key, value in values.items()}
